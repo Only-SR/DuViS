@@ -325,13 +325,7 @@ class Coach:
                 m12 = torch.reshape(m1[:, 1], [args.user, 1])
                 user2=uu2 * m11 + inter_u2 * m12
                 #user1=user_d1+inter_u1
-                if(ep==5):
-                    SAVE_PATH1 = "./user1_yelp_before.npy"
-                    SAVE_PATH2 = "./user2_yelp_before.npy"
-                    user1_before=user1.detach().cpu().numpy()
-                    user2_before=user2.detach().cpu().numpy()
-                    np.save(SAVE_PATH1, user1_before)
-                    np.save(SAVE_PATH2, user2_before)
+               
                 item2=ui2[args.user:]
 
 
@@ -561,4 +555,5 @@ class MLP_0(nn.Module):
         
         concatenated = torch.cat((Zi, Hi), dim=1)
         weight_output = F.softmax(self.leaky_relu(self.linear(concatenated)), dim=1)
+
         return weight_output
